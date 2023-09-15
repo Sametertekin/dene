@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+    body
+    {
+        background:linear-gradient(to right,rgb(31, 235, 167),rgb(83,146,228)) ;
+        margin: auto;
+        width: 300px;
+        height: 300px;
+    }
+
+    #icerik
+    {
+        background-color: aliceblue;
+        width: 300px;
+        height: 300px;
+    }
+
+    #liste
+    {
+        margin: auto;
+        left: 0px;
+        top: 0px;
+        background-color: cadetblue
+    }
+
+    #button1
+    {
+        height: 30px;
+        width: 30px;
+        background-color: blueviolet;
+    }
+
+    .ClearAllDe{
+        margin-bottom: 0px;
+        background-color: blueviolet;
+    }
+
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+ function ekle(){
+    var isim = document.getElementById("isim").value;
+    document.getElementById("liste").innerHTML+=isim+"<br>";
+    isim.value="";
+ }
+ function silme(){
+    document.getElementById("liste").innerHTML="";
+    count=0;
+    updateCounter();
+ }
+ var count=0;
+
+ function ekle(){
+    var isim=document.getElementById("isim").value;
+    var liste=document.getElementById("liste");
+    isim.value="";
+
+    if(isim.trim()!==""){
+       liste.innerHTML+=isim+"<br>";
+       isim="";
+       count++;
+       updateCounter();
+    }
+ }
+ function silme(){
+    var liste=document.getElementById("liste");
+    liste.innerHTML="";
+    isim.innerHTML="";
+    count=0;
+    updateCounter();
+ }
+ function updateCounter(){
+    var sayacElement=document.getElementById("countDisplay");
+    sayacElement.textContent="You have " +count+ " pending tasks";
+ }
+
+ function silmeBtn(){
+    var btn=document.createElement("button");
+ }
+
+</script>
+<body>
+    <div id="icerik">
+        <h1>Todo App</h1>
+        <p>
+        <input id="isim" type="text" placeholder="Add your new todo"/>
+        <button id="button1" onclick="ekle()">+</button>
+        </p>
+        <div id="liste" onmouseover="silmeBtn()"></div>
+        <div id="countDisplay" class="YouAre">You have pending tasks</div>
+        <div>
+            <button class="ClearAllDe" onclick="silme()">Clear All</button>
+        </div>
+    </div>
+</body>
+</html>
